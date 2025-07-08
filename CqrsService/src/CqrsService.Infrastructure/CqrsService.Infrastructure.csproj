@@ -1,0 +1,98 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Persistence\Configuration\**" />
+    <Compile Remove="Persistence\Oracle\Models\**" />
+    <Compile Remove="Providers\**" />
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Persistence\Configuration\**" />
+    <EmbeddedResource Remove="Persistence\Oracle\Models\**" />
+    <EmbeddedResource Remove="Providers\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Persistence\Configuration\**" />
+    <None Remove="Persistence\Oracle\Models\**" />
+    <None Remove="Providers\**" />
+    <None Remove="Services\**" />
+    <None Remove="Persistence\Redis\" />
+    <None Remove="Orchestrators\" />
+    <None Remove="System.Runtime.Caching" />
+    <None Remove="Microsoft.Extensions.Caching.Memory" />
+    <None Remove="Persistence\PostgreSql\" />
+    <None Remove="Dapper" />
+    <None Remove="Npgsql" />
+    <None Remove="Dapper.Contrib" />
+    <None Remove="StackExchange.Redis" />
+    <None Remove="Microsoft.Extensions.Caching.Redis" />
+    <None Remove="Microsoft.Extensions.Caching.StackExchangeRedis" />
+    <None Remove="Microsoft.Extensions.Configuration" />
+    <None Remove="Dapper.Oracle" />
+    <None Remove="Oracle.ManagedDataAccess.Core" />
+    <None Remove="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <None Remove="Provider\External\" />
+    <None Remove="Provider\External\ReqRes\" />
+    <None Remove="AWSSDK.SQS" />
+    <None Remove="AWSSDK.Extensions.NETCore.Setup" />
+    <None Remove="Microsoft.Extensions.Options.ConfigurationExtensions" />
+    <None Remove="AutoMapper" />
+    <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+    <None Remove="AutoMapper.Extensions.ExpressionMapping" />
+    <None Remove="Persistence\Entities\" />
+    <None Remove="Provider\External\ReqRes\Models\" />
+    <None Remove="Options\" />
+    <None Remove="Provider\Queue\Models\" />
+    <None Remove="RabbitMQ.Client" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.17.5" />
+    <PackageReference Include="KafkaFlow" Version="3.0.10" />
+    <PackageReference Include="KafkaFlow.LogHandler.Console" Version="3.0.10" />
+    <PackageReference Include="KafkaFlow.Microsoft.DependencyInjection" Version="3.0.10" />
+    <PackageReference Include="KafkaFlow.Serializer.SchemaRegistry.ConfluentJson" Version="3.0.10" />
+    <PackageReference Include="MassTransit" Version="8.2.2" />
+    <PackageReference Include="MassTransit.AmazonSQS" Version="8.2.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.25.0" />
+    <PackageReference Include="Serilog" Version="3.1.1" />
+    <PackageReference Include="System.Text.Json" Version="8.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="Npgsql" Version="8.0.3" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+    <PackageReference Include="StackExchange.Redis" Version="2.7.33" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Dapper.Oracle" Version="2.0.3" />
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.140" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+    <PackageReference Include="AWSSDK.SQS" Version="3.7.300.84" />
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.300" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.ExpressionMapping" Version="7.0.0" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Persistence\Redis\" />
+    <Folder Include="Orchestrators\" />
+    <Folder Include="Persistence\PostgreSql\" />
+    <Folder Include="Provider\External\" />
+    <Folder Include="Provider\External\ReqRes\" />
+    <Folder Include="Persistence\Entities\" />
+    <Folder Include="Provider\External\ReqRes\Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CqrsService.Application\CqrsService.Application.csproj" />
+    <ProjectReference Include="..\CqrsService.Domain\CqrsService.Domain.csproj" />
+    <ProjectReference Include="..\CqrsService.Shared\CqrsService.Shared.csproj" />
+  </ItemGroup>
+</Project>

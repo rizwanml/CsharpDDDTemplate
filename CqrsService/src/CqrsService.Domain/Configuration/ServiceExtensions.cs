@@ -1,0 +1,17 @@
+﻿using CqrsService.Domain.Options;
+using CqrsService.Domain.Services.ExamplePersonModule;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace CqrsService.Domain.Configuration;
+
+public static partial class ServiceExtensions
+{
+    public static IServiceCollection AddDomainServices(this IServiceCollection serviceCollection, IConfiguration configuration)
+    {
+        serviceCollection.AddTransient<IExamplePersonService, ExamplePersonService>();
+        serviceCollection.Configure<ExampleDomainOptions>(configuration.GetSection(nameof(ExampleDomainOptions))).AddOptions<ExampleDomainOptions>();
+
+        return serviceCollection;
+    }
+}

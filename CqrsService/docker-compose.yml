@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  cqrswebservice:
+    container_name: CqrsService
+    image: cqrsservice
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Local
+      - Serilog:WriteTo__0__Args__serverUrl=http://seq:5341
+    ports:
+      - 12000:5000
+    depends_on:
+      - seq
+  
+  seq:
+    container_name: Seq
+    image: datalust/seq:latest
+    ports:
+      - 5341:80
+    environment:
+      - ACCEPT_EULA=Y
+    restart: unless-stopped

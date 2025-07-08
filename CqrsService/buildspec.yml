@@ -1,0 +1,37 @@
+version: 0.2
+
+env:
+  shell: bash
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+      - echo CODEBUILD_WEBHOOK_HEAD_REF is $CODEBUILD_WEBHOOK_HEAD_REF
+      - echo CODEBUILD_SOURCE_VERSION is $CODEBUILD_SOURCE_VERSION
+      - IMAGE_TAG=$(if [ "$CODEBUILD_WEBHOOK_HEAD_REF" != "" ]; then echo $(echo $CODEBUILD_WEBHOOK_HEAD_REF | sed -e 's%refs/heads/%%'); elif [ "$CODEBUILD_SOURCE_VERSION" != "" ]; then echo $CODEBUILD_SOURCE_VERSION; else echo $DEFAULT_IMAGE_TAG; fi)
+      - IMAGE_TAG=$(echo $IMAGE_TAG | sed -e 's%/%-%' -e 's%master%latest%')
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Setting tag to $IMAGE_TAG
+      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG -f Dockerfile
+      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - docker cp CqrsService:/app/test/TestResults/ ./testresults/
+      - echo Pushing the Docker image...
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+
+reports:
+  api-tests:
+    files:
+      - 'testresults/*.trx'
+    file-format: VisualStudioTrx
+  api-code-coverage:
+    files:
+      - 'testresults/**/*/coverage.cobertura.xml'
+    file-format: CoberturaXml
+    

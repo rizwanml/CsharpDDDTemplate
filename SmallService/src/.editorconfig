@@ -1,0 +1,120 @@
+﻿root = true
+
+[*]
+insert_final_newline = false
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+[*.json]
+indent_style = space
+indent_size = 2
+
+[*.cs]
+
+# Code style defaults
+csharp_prefer_static_local_function = true:suggestion
+
+# Namespace preferences
+csharp_style_namespace_declarations = file_scoped
+dotnet_diagnostic.IDE0160.severity = error
+dotnet_diagnostic.IDE0161.severity = error
+dotnet_style_namespace_match_folder = true
+dotnet_diagnostic.IDE0130.severity = error #Namespace does not match folder structure
+
+# Using directive preferences
+dotnet_sort_system_directives_first = true
+csharp_using_directive_placement = outside_namespace
+dotnet_diagnostic.IDE0065.severity = error
+
+# Switch statement preferences
+csharp_style_prefer_switch_expression = true:suggestion
+dotnet_diagnostic.IDE0010.severity = error # Add missing cases to switch statement
+
+# Readonly preferences
+dotnet_style_readonly_field = true:suggestion
+dotnet_diagnostic.IDE0044.severity = error # Add readonly modifier
+
+# Inline variable declaration preferences
+dotnet_diagnostic.IDE0018.severity = error
+
+# Types preferences: use keywords instead of BCL types, and permit var only when the type is clear
+csharp_style_var_for_built_in_types = false:suggestion
+csharp_style_var_when_type_is_apparent = false:none
+csharp_style_var_elsewhere = false:suggestion
+dotnet_diagnostic.IDE0007.severity = suggestion
+dotnet_diagnostic.IDE0008.severity = suggestion
+
+# New line preferences
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_between_query_expression_clauses = true
+
+# Indentation preferences
+csharp_indent_block_contents = true
+csharp_indent_braces = false
+csharp_indent_case_contents = true
+csharp_indent_case_contents_when_block = true
+csharp_indent_switch_labels = true
+csharp_indent_labels = one_less_than_current
+
+# Constant field preferences: name all using PascalCase
+dotnet_naming_rule.constant_fields_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.constant_fields_should_be_pascal_case.symbols = constant_fields
+dotnet_naming_rule.constant_fields_should_be_pascal_case.style = pascal_case_style
+dotnet_naming_symbols.constant_fields.applicable_kinds = field
+dotnet_naming_symbols.constant_fields.required_modifiers = const
+dotnet_naming_style.pascal_case_style.capitalization = pascal_case
+
+# Internal and Private field preferences: name all using _camelCase
+dotnet_naming_rule.camel_case_for_private_internal_fields.severity = suggestion
+dotnet_naming_rule.camel_case_for_private_internal_fields.symbols = private_internal_fields
+dotnet_naming_rule.camel_case_for_private_internal_fields.style = camel_case_underscore_style
+dotnet_naming_symbols.private_internal_fields.applicable_kinds = field
+dotnet_naming_symbols.private_internal_fields.applicable_accessibilities = private, internal
+dotnet_naming_style.camel_case_underscore_style.required_prefix = _
+dotnet_naming_style.camel_case_underscore_style.capitalization = camel_case
+
+# Uri rules
+dotnet_diagnostic.CA1056.severity = error # URI properties should not be strings
+dotnet_diagnostic.CA1054.severity = error # URI parameters should not be strings
+dotnet_diagnostic.CA1055.severity = error # URI return values should not be strings
+
+# Maintainability, Reliability and Usage rules
+dotnet_diagnostic.CA1507.severity = error # Use nameof in place of string
+dotnet_diagnostic.CA1727.severity = error # Use PascalCase for named placeholders
+dotnet_diagnostic.CA2017.severity = error # Parameter count mismatch
+dotnet_diagnostic.CA1801.severity = error # Review unused parameters
+dotnet_diagnostic.CA2219.severity = error # Do not raise exceptions in exception clauses
+dotnet_diagnostic.CA2245.severity = error # Do not assign a property to itself
+
+# Performance rules
+dotnet_diagnostic.CA1805.severity = error # Do not initialize unnecessarily
+dotnet_diagnostic.CA1806.severity = error # Do not ignore method results
+dotnet_diagnostic.CA1810.severity = error # Initialize reference type static fields inline
+dotnet_diagnostic.CA1812.severity = error # Avoid uninstantiated internal classes
+dotnet_diagnostic.CA1813.severity = error # Avoid unsealed attributes
+dotnet_diagnostic.CA1822.severity = warning # Mark members as static
+dotnet_diagnostic.CA1823.severity = error # Avoid unused private fields
+dotnet_diagnostic.CA1825.severity = error # Avoid zero-length array allocations
+dotnet_diagnostic.CA1836.severity = error # Prefer IsEmpty over Count when available
+dotnet_diagnostic.CA1851.severity = warning # Possible multiple enumerations of IEnumerable collection
+dotnet_diagnostic.CA1852.severity = error # Seal internal types
+dotnet_diagnostic.CA1862.severity = error # Use the 'StringComparison' method overloads to perform case-insensitive string comparisons
+dotnet_diagnostic.CA1869.severity = error # Cache and reuse 'JsonSerializerOptions' instances
+dotnet_diagnostic.CA2000.severity = error # Dispose objects before losing scope
+
+# Security rules
+dotnet_diagnostic.CA2327.severity = error # Do not use insecure JsonSerializerSettings
+dotnet_diagnostic.CA2328.severity = error # Ensure that JsonSerializerSettings are secure
+dotnet_diagnostic.CA2329.severity = error # Do not deserialize with JsonSerializer using an insecure configuration
+dotnet_diagnostic.CA2330.severity = error # Ensure that JsonSerializer has a secure configuration when deserializing
+dotnet_diagnostic.CA5365.severity = error # Do Not Disable HTTP Header Checking
+dotnet_diagnostic.CA5363.severity = error # Do not disable request validation
+dotnet_diagnostic.CA5395.severity = error # Miss HttpVerb attribute for action methods
+dotnet_diagnostic.CA5399.severity = error # Enable HttpClient certificate revocation list check
+dotnet_diagnostic.CA5400.severity = error # Ensure HttpClient certificate revocation list check is not disabled

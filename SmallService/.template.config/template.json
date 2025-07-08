@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Muhammad Rizwan",
+    "classifications": [ "Solution", "API", "SmallService" ],
+    "identity": "MuhammadRizwan.templates.smallservice",
+    "name": "DDD Template: Small Service",
+    "shortName": "SmallService",
+    "tags": {
+      "language": "C#",
+      "type": "solution"
+    },
+    "sourceName": "SmallService",
+    "preferNameDirectory": false
+  }
